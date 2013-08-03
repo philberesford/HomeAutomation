@@ -3,24 +3,10 @@ import socket
 class LightwaveMediator:
     """Provides interaction with the LightwaveRF home automation suite"""
     
-    def __init__(self, ip = None, port = None, debug_mode = None):   
-        # Define class constants
-        DEFAULT_LIGHTWAVE_UDP_IP = "255.255.255.255"
-        DEFAULT_LIGHTWAVE_UDP_PORT = 9760
-
-        if ip == None:
-            ip = DEFAULT_LIGHTWAVE_UDP_IP
+    def __init__(self, ip = "255.255.255.255", port = 9760, debug_mode = False):   
         self.ip = ip
-        
-        if port == None:
-            port = DEFAULT_LIGHTWAVE_UDP_PORT         
         self.port = port
-
-        if debug_mode == None:
-            self.debug_mode = debug_mode
-        else:
-            self.debug_mode = True
-    
+        self.debug_mode = debug_mode
     
     def execute_plug(self, room_number, device_number, on):
         """Executes a command against the LightwaveRF Wifi link to turn a plug socket on/off"""
